@@ -13,14 +13,17 @@ import 'package:shamo/pages/sign_up_page.dart';
 import 'package:shamo/pages/splash_page.dart';
 import 'package:shamo/providers/auth_provider.dart';
 import 'package:shamo/providers/cart_provider.dart';
+import 'package:shamo/providers/category_provider.dart';
 import 'package:shamo/providers/page_provider.dart';
 import 'package:shamo/providers/product_provider.dart';
+import 'package:shamo/providers/status_category_provider.dart';
 import 'package:shamo/providers/transaction_provider.dart';
 import 'package:shamo/providers/wishlist_provider.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
+    name: 'kipli-shamo',
     options: DefaultFirebaseOptions.currentPlatform,
   );
 
@@ -42,6 +45,12 @@ class MyApp extends StatelessWidget {
         ),
         ChangeNotifierProvider(
           create:(context) => WishlistProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => CategoryProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => StatusCategoryProvider(),
         ),
         ChangeNotifierProvider(
           create:(context) => CartProvider(),

@@ -6,7 +6,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class AuthService{
 
-  String baseUrl = 'https://shamo-backend.buildwithangga.id/api';
+  String baseUrl = 'https://rosybrown-elk-506059.hostingersite.com/api';
 
   Future<UserModel> register({ String? name, String? username, String? email, String? password }) async {
 

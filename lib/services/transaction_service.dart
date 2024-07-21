@@ -5,7 +5,7 @@ import 'package:shamo/models/cart_model.dart';
 import 'package:shamo/models/midtrans_model.dart';
 
 class TransactionService {
-  String baseUrl = 'https://shamo-backend.buildwithangga.id/api';
+  String baseUrl = 'https://rosybrown-elk-506059.hostingersite.com/api';
   String payType = '';
 
   Future<MidtransModel> checkout({

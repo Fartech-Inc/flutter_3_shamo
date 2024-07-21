@@ -47,6 +47,10 @@ TextStyle alertTextStyle = GoogleFonts.poppins(
   color: alertColor,
 );
 
+TextStyle whiteTextStyle = GoogleFonts.poppins(
+  color: Colors.white,
+);
+
 FontWeight light     = FontWeight.w300;
 FontWeight regular   = FontWeight.w400;
 FontWeight medium    = FontWeight.w500;

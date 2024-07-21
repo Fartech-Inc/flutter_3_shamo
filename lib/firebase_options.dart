@@ -68,7 +68,7 @@ class DefaultFirebaseOptions {
     projectId: 'shamo-firebase',
     storageBucket: 'shamo-firebase.appspot.com',
     iosClientId: '808367183761-6dgh041fft26h8dihtl7vcf5o0ug2k8r.apps.googleusercontent.com',
-    iosBundleId: 'com.example.shamo',
+    iosBundleId: 'com.kipli.shamo',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
@@ -78,6 +78,6 @@ class DefaultFirebaseOptions {
     projectId: 'shamo-firebase',
     storageBucket: 'shamo-firebase.appspot.com',
     iosClientId: '808367183761-6dgh041fft26h8dihtl7vcf5o0ug2k8r.apps.googleusercontent.com',
-    iosBundleId: 'com.example.shamo',
+    iosBundleId: 'com.kipli.shamo',
   );
 }
