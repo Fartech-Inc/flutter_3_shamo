@@ -36,53 +36,53 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // return MultiProvider(
-    //   providers: [
-    //     ChangeNotifierProvider(
-    //       create:(context) => AuthProvider(),
-    //     ),
-    //     ChangeNotifierProvider(
-    //       create:(context) => ProductProvider(),
-    //     ),
-    //     ChangeNotifierProvider(
-    //       create:(context) => WishlistProvider(),
-    //     ),
-    //     ChangeNotifierProvider(
-    //       create: (context) => CategoryProvider(),
-    //     ),
-    //     ChangeNotifierProvider(
-    //       create: (context) => StatusCategoryProvider(),
-    //     ),
-    //     ChangeNotifierProvider(
-    //       create:(context) => CartProvider(),
-    //     ),
-    //     ChangeNotifierProvider(
-    //       create:(context) => TransactionProvider(),
-    //     ),
-    //     ChangeNotifierProvider(
-    //       create:(context) => PageProvider(),
-    //     ),
-    //   ],
-    //   child: MaterialApp(
-    //     debugShowCheckedModeBanner: false,
-    //     routes: {
-    //       '/' : (context) => const SplashPage(),
-    //       '/sign-in' : (context) =>  const SignInPage(),
-    //       '/sign-up' : (context) =>  const SignUpPage(),
-    //       '/home' : (context) =>  const MainPage(),
-    //       '/edit-profile' :(context) => const EditProfilePage(),
-    //       '/cart' : (context) => const CartPage(),
-    //       '/checkout' : (context) => const CheckoutPage(),
-    //       '/checkout-payment': (context) => const PaymentPage(),
-    //       '/checkout-success' : (context) => const CheckoutSuccessPage(),
-    //     },
-    //   ),
-    // );
-
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Kipli-Shamo',
-      home: const IndexPage(),
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create:(context) => AuthProvider(),
+        ),
+        ChangeNotifierProvider(
+          create:(context) => ProductProvider(),
+        ),
+        ChangeNotifierProvider(
+          create:(context) => WishlistProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => CategoryProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => StatusCategoryProvider(),
+        ),
+        ChangeNotifierProvider(
+          create:(context) => CartProvider(),
+        ),
+        ChangeNotifierProvider(
+          create:(context) => TransactionProvider(),
+        ),
+        ChangeNotifierProvider(
+          create:(context) => PageProvider(),
+        ),
+      ],
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        routes: {
+          '/' : (context) => const SplashPage(),
+          '/sign-in' : (context) =>  const SignInPage(),
+          '/sign-up' : (context) =>  const SignUpPage(),
+          '/home' : (context) =>  const MainPage(),
+          '/edit-profile' :(context) => const EditProfilePage(),
+          '/cart' : (context) => const CartPage(),
+          '/checkout' : (context) => const CheckoutPage(),
+          '/checkout-payment': (context) => const PaymentPage(),
+          '/checkout-success' : (context) => const CheckoutSuccessPage(),
+        },
+      ),
     );
+
+    // return MaterialApp(
+    //   debugShowCheckedModeBanner: false,
+    //   title: 'Kipli-Shamo',
+    //   home: const IndexPage(),
+    // );
   }
 }
