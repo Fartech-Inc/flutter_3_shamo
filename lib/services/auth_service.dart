@@ -4,19 +4,18 @@ import 'package:shamo/models/user_model.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 
-class AuthService{
+class AuthService {
+  String baseUrl = 'https://doorprize-admin.my.id/api';
 
-  String baseUrl = 'https://rosybrown-elk-506059.hostingersite.com/api';
-
-  Future<UserModel> register({ String? name, String? username, String? email, String? password }) async {
-
+  Future<UserModel> register(
+      {String? name, String? username, String? email, String? password}) async {
     var url = Uri.parse('$baseUrl/register');
-    var headers = {'Content-Type' : 'application/json'};
+    var headers = {'Content-Type': 'application/json'};
     var body = jsonEncode({
-      'name' : name,
-      'username' : username,
-      'email' : email,
-      'password' : password
+      'name': name,
+      'username': username,
+      'email': email,
+      'password': password
     });
 
     var response = await http.post(
@@ -27,8 +26,7 @@ class AuthService{
 
     print(response.body);
 
-    if(response.statusCode == 200){
-      
+    if (response.statusCode == 200) {
       var data = jsonDecode(response.body)['data'];
       UserModel user = UserModel.fromJson(data['user']);
       var token = user.token = 'Bearer ${data['access_token']}';
@@ -38,23 +36,16 @@ class AuthService{
       prefs.setString('password', password!);
       prefs.setString('token', token);
 
-      return user; 
-
+      return user;
     } else {
-      
       throw Exception('Gagal Register');
-    
     }
   }
 
-  Future<UserModel> login({ String? email, String? password }) async {
-
+  Future<UserModel> login({String? email, String? password}) async {
     var url = Uri.parse('$baseUrl/login');
-    var headers = {'Content-Type' : 'application/json'};
-    var body = jsonEncode({
-      'email' : email,
-      'password' : password
-    });
+    var headers = {'Content-Type': 'application/json'};
+    var body = jsonEncode({'email': email, 'password': password});
 
     var response = await http.post(
       url,
@@ -66,8 +57,7 @@ class AuthService{
 
     print(response.statusCode);
 
-    if(response.statusCode == 200){
-      
+    if (response.statusCode == 200) {
       var data = jsonDecode(response.body)['data'];
       UserModel user = UserModel.fromJson(data['user']);
       var token = user.token = 'Bearer ${data['access_token']}';
@@ -77,12 +67,9 @@ class AuthService{
       prefs.setString('password', password!);
       prefs.setString('token', token);
 
-      return user; 
-
+      return user;
     } else {
-      
       throw Exception('Gagal Login');
-    
     }
   }
 
@@ -125,11 +112,11 @@ class AuthService{
     }
   }
 
-  Future<bool> logout(String token) async{
+  Future<bool> logout(String token) async {
     var url = Uri.parse('$baseUrl/logout');
     var headers = {
-      'Content-Type' : 'application/json',
-      'Authorization' : token,
+      'Content-Type': 'application/json',
+      'Authorization': token,
     };
 
     var response = await http.post(
@@ -139,19 +126,15 @@ class AuthService{
 
     print(response.body);
 
-    if(response.statusCode == 200){
+    if (response.statusCode == 200) {
       final prefs = await SharedPreferences.getInstance();
       prefs.remove('email');
       prefs.remove('password');
       prefs.remove('token');
 
-      return true; 
-
+      return true;
     } else {
-      
       throw Exception('Gagal Logout');
-    
     }
   }
-
 }

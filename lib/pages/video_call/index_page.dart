@@ -35,7 +35,7 @@ class _IndexPageState extends State<IndexPage> {
           child: Column(
             children: [
               const SizedBox(height: 36),
-              Image.network("https://tinyurl.com/2p889y4k"),
+              // Image.network("https://tinyurl.com/2p889y4k"),
               const SizedBox(height: 20),
               TextField(
                 controller: _channelController,
@@ -73,7 +73,7 @@ class _IndexPageState extends State<IndexPage> {
     if (_channelController.text.isNotEmpty){
       await _handleCameraAndMic(Permission.camera);
       await _handleCameraAndMic(Permission.microphone);
-      
+      if (!mounted) return;
       await Navigator.push(context, MaterialPageRoute(builder: (context) => CallPage(clientName: _channelController.text, role: _role,),));
     }
   }

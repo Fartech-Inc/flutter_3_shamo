@@ -41,10 +41,8 @@ class _CallPageState extends State<CallPage> {
   Future<void> initialize() async {
     if (appId.isEmpty) {
       setState(() {
-        _infoStrings.add(
-          'App id is missing'
-        );
-        _infoStrings.add("agora is not starting");
+        _infoStrings.add('App id is missing');
+        _infoStrings.add("Agora is not starting");
       });
       return;
     }
@@ -56,10 +54,19 @@ class _CallPageState extends State<CallPage> {
     _addAgoraEventHandlers();
 
     VideoEncoderConfiguration configuration = VideoEncoderConfiguration();
-    configuration.dimensions = VideoDimensions(width: 1920, height: 1080);
+    configuration.dimensions = const VideoDimensions(width: 540, height: 260); // Mengubah resolusi
     await _engine.setVideoEncoderConfiguration(configuration);
-    await _engine.joinChannel(token, widget.clientName!, null, 0);
+
+    // Cek apakah token dan clientName sudah benar
+    if (token != null && widget.clientName != null) {
+      await _engine.joinChannel(token, widget.clientName!, null, 0);
+    } else {
+      setState(() {
+        _infoStrings.add("Token or client name is missing");
+      });
+    }
   }
+
 
   void _addAgoraEventHandlers() {
     _engine.setEventHandler(RtcEngineEventHandler(error: (code){
