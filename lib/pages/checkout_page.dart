@@ -205,7 +205,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
                       ),
                     ),
                     Text(
-                      '\$${cartProvider.totalPrice()}',
+                      'Rp. ${cartProvider.totalPrice()}',
                       style: primaryTextStyle.copyWith(
                         fontSize: 14,
                         fontWeight:medium,
@@ -255,7 +255,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
                       ),
                     ),
                     Text(
-                      '\$${cartProvider.totalPrice()}',
+                      'Rp. ${cartProvider.totalPrice()}',
                       style: priceTextStyle.copyWith(
                         fontSize: 14,
                         fontWeight: semiBold,

@@ -9,6 +9,8 @@ import 'package:shamo/services/message_service.dart';
 import 'package:shamo/theme.dart';
 import 'package:shamo/widgets/chat_bubble.dart';
 
+import '../utils/helper.dart';
+
 class DetailChatPage extends StatefulWidget {
   ProductModel product;
   DetailChatPage(this.product, {super.key});
@@ -121,7 +123,7 @@ class _DetailChatPageState extends State<DetailChatPage> {
                     height: 2,
                   ),
                   Text(
-                    '\$${widget.product.price}',
+                    Helper().formatRupiah(widget.product.price!.toInt()),
                     style: priceTextStyle.copyWith(
                       fontWeight: medium,
                     ),

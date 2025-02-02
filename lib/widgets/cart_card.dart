@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:shamo/models/cart_model.dart';
 import 'package:shamo/providers/cart_provider.dart';
 import 'package:shamo/theme.dart';
+import 'package:shamo/utils/helper.dart';
 
 class CartCard extends StatelessWidget {
   
@@ -56,7 +57,7 @@ class CartCard extends StatelessWidget {
                       ),
                     ),
                     Text(
-                      '\$${cart.product.price}',
+                      Helper().formatRupiah(cart.product.price!.toInt()),
                       style: priceTextStyle,
                     )
                   ],

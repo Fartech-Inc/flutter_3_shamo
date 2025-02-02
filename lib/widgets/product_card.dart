@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:shamo/models/product_model.dart';
 import 'package:shamo/pages/product_page.dart';
 import 'package:shamo/theme.dart';
+import 'package:shamo/utils/helper.dart';
 
 class ProductCard extends StatelessWidget {
   
@@ -70,7 +71,7 @@ class ProductCard extends StatelessWidget {
                     height: 6,
                   ),
                   Text(
-                    "\$${product.price}",
+                    Helper().formatRupiah(product.price!.toInt()),
                     style: priceTextStyle.copyWith(
                       fontWeight: semiBold,
                     ),

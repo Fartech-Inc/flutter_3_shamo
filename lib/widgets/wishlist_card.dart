@@ -4,6 +4,8 @@ import 'package:shamo/models/product_model.dart';
 import 'package:shamo/providers/wishlist_provider.dart';
 import 'package:shamo/theme.dart';
 
+import '../utils/helper.dart';
+
 class WishListCard extends StatelessWidget {
   final ProductModel product;
   const WishListCard(this.product, {super.key});
@@ -52,7 +54,7 @@ class WishListCard extends StatelessWidget {
                   maxLines: 1,
                 ),
                 Text(
-                  '\$${product.price}',
+                  Helper().formatRupiah(product.price!.toInt()),
                   style: priceTextStyle,
                 ),
               ],

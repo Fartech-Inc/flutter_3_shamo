@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shamo/models/product_model.dart';
 import 'package:shamo/theme.dart';
+import 'package:shamo/utils/helper.dart';
 
 class ChatBubble extends StatelessWidget {
   final String text;
@@ -59,7 +60,7 @@ class ChatBubble extends StatelessWidget {
                         height: 4,
                       ),
                       Text(
-                        '\$${product!.price!}',
+                        Helper().formatRupiah(product!.price!.toInt()),
                         style: priceTextStyle.copyWith(
                         fontWeight: medium,
                         ),

@@ -9,9 +9,9 @@ class CheckoutSuccessPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     TransactionProvider transactionProvider =
-        Provider.of<TransactionProvider>(context);
+    Provider.of<TransactionProvider>(context);
 
-    header() {
+    AppBar header() {
       return AppBar(
         backgroundColor: backgroundColor1,
         centerTitle: true,
@@ -45,25 +45,32 @@ class CheckoutSuccessPage extends StatelessWidget {
               height: 12,
             ),
             Text(
-              'Lakukan pembayaran untuk\nmenyelesaikan transaksi',
+              'Lakukan pembayaran untuk menyelesaikan transaksi',
               style: secondaryTextStyle,
               textAlign: TextAlign.center,
             ),
-            Text(
-              'Total Harga : ${transactionProvider.midtrans.grossAmount}',
-              style: primaryTextStyle.copyWith(fontWeight: bold),
-              textAlign: TextAlign.center,
-            ),
-            Text(
-              'Bank : ${transactionProvider.midtrans.vaNumbers!.first.bank}',
-              style: secondaryTextStyle,
-              textAlign: TextAlign.center,
-            ),
-            Text(
-              'Va Number : ${transactionProvider.midtrans.vaNumbers!.first.vaNumber}',
-              style: secondaryTextStyle,
-              textAlign: TextAlign.center,
-            ),
+            // if (transactionProvider.midtrans.grossAmount != null)
+            //   Text(
+            //     'Total Harga : Rp ${transactionProvider.midtrans.grossAmount}',
+            //     style: primaryTextStyle.copyWith(fontWeight: bold),
+            //     textAlign: TextAlign.center,
+            //   ),
+            // if (transactionProvider.midtrans.vaNumbers != null &&
+            //     transactionProvider.midtrans.vaNumbers!.isNotEmpty)
+            //   Column(
+            //     children: [
+            //       Text(
+            //         'Bank : ${transactionProvider.midtrans.vaNumbers!.first.bank.toUpperCase()}',
+            //         style: secondaryTextStyle,
+            //         textAlign: TextAlign.center,
+            //       ),
+            //       Text(
+            //         'VA Number : ${transactionProvider.midtrans.vaNumbers!.first.vaNumber}',
+            //         style: secondaryTextStyle,
+            //         textAlign: TextAlign.center,
+            //       ),
+            //     ],
+            //   ),
             Container(
               width: 196,
               height: 44,
@@ -107,7 +114,9 @@ class CheckoutSuccessPage extends StatelessWidget {
                     color: const Color(0xffB7B6BF),
                   ),
                 ),
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.pushNamed(context, '/my-orders');
+                },
               ),
             ),
           ],

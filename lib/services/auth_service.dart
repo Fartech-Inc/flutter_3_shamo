@@ -60,7 +60,7 @@ class AuthService {
     if (response.statusCode == 200) {
       var data = jsonDecode(response.body)['data'];
       UserModel user = UserModel.fromJson(data['user']);
-      var token = user.token = 'Bearer ${data['access_token']}';
+      var token = user.token = 'Bearer ${data['token']}';
 
       final prefs = await SharedPreferences.getInstance();
       prefs.setString('email', email!);
