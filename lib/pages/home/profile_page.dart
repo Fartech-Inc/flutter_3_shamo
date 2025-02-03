@@ -189,6 +189,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   child: Image.network(
                     user.profilePhotoUrl,
                     width: 64,
+                    errorBuilder: (context, error, stackTrace) => Container(),
                   ),
                 ),
                 const SizedBox(
@@ -310,6 +311,22 @@ class _ProfilePageState extends State<ProfilePage> {
               ),
               menuItem(
                 'Rate App'
+              ),
+              const SizedBox(
+                height: 30,
+              ),
+              Text(
+                'Admin Tools',
+                style: primaryTextStyle.copyWith(
+                  fontSize: 16,
+                  fontWeight: semiBold,
+                ),
+              ),
+              GestureDetector(
+                onTap: () {
+                  Navigator.pushNamed(context, '/admin-chat');
+                },
+                child: menuItem('Admin Chat'),
               ),
             ],
           ),

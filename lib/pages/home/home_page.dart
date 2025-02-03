@@ -14,13 +14,14 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     AuthProvider authProvider = Provider.of<AuthProvider>(context);
     UserModel user = authProvider.user;
     ProductProvider productProvider = Provider.of<ProductProvider>(context);
     CategoryProvider categoryProvider = Provider.of<CategoryProvider>(context);
 
-    Widget header(){
+    print('Jumlah produk: ${productProvider.products.length}');
+
+    Widget header() {
       return Container(
         margin: EdgeInsets.only(
           top: defaultMargin,
@@ -50,18 +51,25 @@ class HomePage extends StatelessWidget {
                 ],
               ),
             ),
-            Container(
-              width: 54,
-              height: 54,
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                image: DecorationImage(
-                  image: NetworkImage(
-                    user.profilePhotoUrl,
-                  ),
-                ),
-              ),
-            )
+            // Container(
+            //   width: 54,
+            //   height: 54,
+            //   decoration: BoxDecoration(
+            //     shape: BoxShape.circle,
+            //     image: DecorationImage(
+            //       image: NetworkImage(
+            //         user.profilePhotoUrl,
+            //
+            //       ),
+            //     ),
+            //   ),
+            // )
+            Image.network(
+              user.profilePhotoUrl,
+              errorBuilder: (context, error, stackTrace) {
+                return const Icon(Icons.person);
+              },
+            ),
           ],
         ),
       );
@@ -147,7 +155,7 @@ class HomePage extends StatelessWidget {
     //               ),
     //             ),
     //           ),
-        
+
     //           Container(
     //             padding: const EdgeInsets.symmetric(
     //               horizontal: 12,
@@ -172,7 +180,7 @@ class HomePage extends StatelessWidget {
     //               ),
     //             ),
     //           ),
-        
+
     //           Container(
     //             padding: const EdgeInsets.symmetric(
     //               horizontal: 12,
@@ -197,14 +205,14 @@ class HomePage extends StatelessWidget {
     //               ),
     //             ),
     //           ),
-              
+
     //         ],
     //       ),
     //     ),
     //   );
     // }
 
-     Widget categoryContent() {
+    Widget categoryContent() {
       return Container(
         margin: EdgeInsets.only(
           left: defaultMargin,
@@ -213,21 +221,19 @@ class HomePage extends StatelessWidget {
         height: 40,
         child: ListView(
           scrollDirection: Axis.horizontal,
-          children: categoryProvider.category
-              .map(
-                (itemCategory) {
-                  print('ini yaaa ${itemCategory.name}');
-                  return CustomCategory(
-                  text: itemCategory.name,
-                );
-                },
-              )
-              .toList(),
+          children: categoryProvider.category.map(
+            (itemCategory) {
+              print('ini yaaa ${itemCategory.name}');
+              return CustomCategory(
+                text: itemCategory.name,
+              );
+            },
+          ).toList(),
         ),
       );
     }
 
-    Widget popularProductsTitle(){
+    Widget popularProductsTitle() {
       return Container(
         margin: EdgeInsets.only(
           top: defaultMargin,
@@ -244,7 +250,7 @@ class HomePage extends StatelessWidget {
       );
     }
 
-    Widget popularProducts(){
+    Widget popularProducts() {
       return Container(
         margin: const EdgeInsets.only(
           top: 14,
@@ -257,10 +263,11 @@ class HomePage extends StatelessWidget {
                 width: defaultMargin,
               ),
               Row(
-                children: productProvider.products.map(
-                  (product) => ProductCard(product),
-                 )
-                 .toList(),
+                children: productProvider.products
+                    .map(
+                      (product) => ProductCard(product),
+                    )
+                    .toList(),
               ),
             ],
           ),
@@ -268,7 +275,7 @@ class HomePage extends StatelessWidget {
       );
     }
 
-    Widget newArrivalsTitle(){
+    Widget newArrivalsTitle() {
       return Container(
         margin: EdgeInsets.only(
           top: defaultMargin,
@@ -285,20 +292,21 @@ class HomePage extends StatelessWidget {
       );
     }
 
-    Widget newArrivals(){
+    Widget newArrivals() {
       return Container(
         margin: const EdgeInsets.only(
           top: 14,
         ),
         child: Column(
-          children: productProvider.products.map(
-            (product) => ProductTile(product),
-          )
-          .toList(),
+          children: productProvider.products
+              .map(
+                (product) => ProductTile(product),
+              )
+              .toList(),
         ),
       );
     }
-    
+
     return ListView(
       children: [
         header(),

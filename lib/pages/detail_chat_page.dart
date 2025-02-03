@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shamo/models/message_model.dart';
 import 'package:shamo/models/product_model.dart';
+import 'package:shamo/pages/video_call/index_page.dart';
 import 'package:shamo/providers/auth_provider.dart';
 import 'package:shamo/services/message_service.dart';
 import 'package:shamo/theme.dart';
@@ -54,9 +55,7 @@ class _DetailChatPageState extends State<DetailChatPage> {
                   'assets/image_shop_logo_online.png',
                   width: 40,
                 ),
-                const SizedBox(
-                  width: 12,
-                ),
+                const SizedBox(width: 12),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -73,11 +72,24 @@ class _DetailChatPageState extends State<DetailChatPage> {
                         fontWeight: light,
                         fontSize: 13,
                       ),
-                    )
+                    ),
                   ],
                 ),
               ],
             ),
+            actions: [
+              IconButton(
+                icon: const Icon(Icons.videocam, color: Colors.white),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const IndexPage(),
+                    ),
+                  );
+                },
+              ),
+            ],
           ),
         ),
       );

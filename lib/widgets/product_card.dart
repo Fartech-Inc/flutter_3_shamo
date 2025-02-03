@@ -37,10 +37,15 @@ class ProductCard extends StatelessWidget {
               height: 30,
             ),
             Image.network(
-              product.galleries![0].url,
+              product.galleries != null && product.galleries!.isNotEmpty
+                  ? product.galleries![0].url
+                  : 'https://example.com/default-image.png',
               width: 215,
               height: 150,
               fit: BoxFit.cover,
+              errorBuilder: (context, error, stackTrace) {
+                return const Icon(Icons.error);
+              },
             ),
             Container(
               margin: const EdgeInsets.symmetric(

@@ -1,5 +1,5 @@
 import 'dart:convert';
-
+import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:shamo/models/product_model.dart';
 
@@ -16,6 +16,7 @@ class ProductService {
 
     if (response.statusCode == 200) {
       List data = jsonDecode(response.body)['data']['data'];
+      debugPrint("ini data product service: $data");
       List<ProductModel> products = [];
 
       for (var item in data) {

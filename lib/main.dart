@@ -2,6 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shamo/firebase_options.dart';
+import 'package:shamo/pages/admin_chat_page.dart';
 import 'package:shamo/pages/cart_page.dart';
 import 'package:shamo/pages/checkout_page.dart';
 import 'package:shamo/pages/checkout_success_page.dart';
@@ -75,6 +76,7 @@ class MyApp extends StatelessWidget {
           '/checkout' : (context) => const CheckoutPage(),
           '/checkout-payment': (context) => const PaymentPage(),
           '/checkout-success' : (context) => const CheckoutSuccessPage(),
+          '/admin-chat': (context) => const AdminChatPage(),
         },
       ),
     );
