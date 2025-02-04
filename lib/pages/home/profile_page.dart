@@ -324,7 +324,7 @@ class _ProfilePageState extends State<ProfilePage> {
               ),
               GestureDetector(
                 onTap: () {
-                  Navigator.pushNamed(context, '/admin-chat');
+                  Navigator.pushNamed(context, '/admin-chat-rooms');
                 },
                 child: menuItem('Admin Chat'),
               ),

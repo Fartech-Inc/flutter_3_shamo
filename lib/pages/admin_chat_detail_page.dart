@@ -4,21 +4,23 @@ import 'package:shamo/services/message_service.dart';
 import 'package:shamo/theme.dart';
 import 'package:shamo/widgets/chat_bubble.dart';
 
-class AdminChatPage extends StatefulWidget {
-  const AdminChatPage({Key? key}) : super(key: key);
+class AdminChatDetailPage extends StatefulWidget {
+  final int userId;
+
+  const AdminChatDetailPage({Key? key, required this.userId}) : super(key: key);
 
   @override
-  State<AdminChatPage> createState() => _AdminChatPageState();
+  State<AdminChatDetailPage> createState() => _AdminChatDetailPageState();
 }
 
-class _AdminChatPageState extends State<AdminChatPage> {
+class _AdminChatDetailPageState extends State<AdminChatDetailPage> {
   TextEditingController messageController = TextEditingController();
 
-  void handleSendMessage(MessageModel lastMessage) async {
+  void handleSendMessage() async {
     if (messageController.text.isNotEmpty) {
       await MessageService().addAdminMessage(
         message: messageController.text,
-        userId: lastMessage.userId,
+        userId: widget.userId,
       );
       messageController.clear();
     }
@@ -30,15 +32,14 @@ class _AdminChatPageState extends State<AdminChatPage> {
       appBar: AppBar(
         backgroundColor: backgroundColor1,
         title: Text(
-          'Admin Chat',
+          'Chat with User ${widget.userId}',
           style: primaryTextStyle,
         ),
         centerTitle: true,
       ),
       body: StreamBuilder<List<MessageModel>>(
-        stream: MessageService().getAllMessages(),
+        stream: MessageService().getMessagesByUserId(userId: widget.userId),
         builder: (context, snapshot) {
-          print(snapshot.data);
           if (snapshot.hasData) {
             var messages = snapshot.data!;
             if (messages.isEmpty) {
@@ -49,8 +50,6 @@ class _AdminChatPageState extends State<AdminChatPage> {
                 ),
               );
             }
-
-            var lastMessage = messages.last;
 
             return Column(
               children: [
@@ -87,12 +86,19 @@ class _AdminChatPageState extends State<AdminChatPage> {
                       const SizedBox(width: 8),
                       IconButton(
                         icon: Icon(Icons.send, color: primaryColor),
-                        onPressed: () => handleSendMessage(lastMessage),
+                        onPressed: handleSendMessage,
                       ),
                     ],
                   ),
                 ),
               ],
+            );
+          } else if (snapshot.hasError) {
+            return Center(
+              child: Text(
+                'An error occurred: ${snapshot.error}',
+                style: secondaryTextStyle,
+              ),
             );
           } else {
             return const Center(
