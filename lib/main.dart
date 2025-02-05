@@ -12,6 +12,7 @@ import 'package:shamo/pages/payment_page.dart';
 import 'package:shamo/pages/sign_in_page.dart';
 import 'package:shamo/pages/sign_up_page.dart';
 import 'package:shamo/pages/splash_page.dart';
+import 'package:shamo/pages/transaction_history_page.dart';
 import 'package:shamo/pages/video_call/index_page.dart';
 import 'package:shamo/providers/auth_provider.dart';
 import 'package:shamo/providers/cart_provider.dart';
@@ -77,7 +78,7 @@ class MyApp extends StatelessWidget {
           '/checkout-payment': (context) => const PaymentPage(),
           '/checkout-success' : (context) => const CheckoutSuccessPage(),
           '/admin-chat-rooms': (context) => const AdminChatRoomListPage(),
-
+          '/transaction-history': (context) => TransactionHistoryPage()
         },
       ),
     );

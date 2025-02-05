@@ -5,6 +5,8 @@ import 'package:shamo/models/cart_model.dart';
 import 'package:shamo/models/midtrans_model.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import '../models/transaction_model.dart';
+
 class TransactionService {
   String baseUrl = 'https://doorprize-admin.my.id/api';
 
@@ -60,6 +62,28 @@ class TransactionService {
       }
     } else {
       throw Exception('Gagal melakukan checkout');
+    }
+  }
+
+  Future<List<TransactionModel>> getTransactions(String token) async {
+    var url = '$baseUrl/transactions';
+
+    var headers = {
+      'Content-Type': 'application/json',
+      'Authorization': token,
+    };
+
+    var response = await http.get(Uri.parse(url), headers: headers);
+
+    if (response.statusCode == 200) {
+      var jsonResponse = jsonDecode(response.body); // Ubah ke Map<String, dynamic>
+
+      print(jsonResponse['data']['data']); // Debugging, cek isi data
+
+      // Pastikan data benar-benar diakses dengan ['data']['data']
+      return TransactionModel.fromJsonList(jsonResponse['data']['data']);
+    } else {
+      throw Exception('Gagal mengambil transaksi');
     }
   }
 }

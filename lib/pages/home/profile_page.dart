@@ -287,8 +287,11 @@ class _ProfilePageState extends State<ProfilePage> {
                   'Edit Profile'
                 ),
               ),
-              menuItem(
-                'Your Orders'
+              GestureDetector(
+                onTap: () {
+                  Navigator.pushNamed(context, '/transaction-history');
+                },
+                child: menuItem('Your Orders'),
               ),
               menuItem(
                 'Help'
