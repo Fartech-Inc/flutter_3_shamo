@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:shamo/models/user_model.dart';
 import 'package:shamo/providers/auth_provider.dart';
@@ -28,7 +29,8 @@ class _ProfilePageState extends State<ProfilePage> {
       });
 
       if(await authProvider.logout(user.token!)){
-        Navigator.pushNamedAndRemoveUntil(context, '/sign-in', (route) => false);
+        // Navigator.pushNamedAndRemoveUntil(context, '/sign-in', (route) => false);
+        context.push('/sign-in');
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
             backgroundColor: secondaryColor,
@@ -145,7 +147,8 @@ class _ProfilePageState extends State<ProfilePage> {
                         height: 44,
                         child: TextButton(
                           onPressed: (){
-                            Navigator.pop(context);
+                            // Navigator.pop(context);
+                            context.pop();
                           },
                           style: TextButton.styleFrom(
                             backgroundColor: backgroundColor1,
@@ -281,7 +284,8 @@ class _ProfilePageState extends State<ProfilePage> {
               ),
               GestureDetector(
                 onTap: (){
-                    Navigator.pushNamed(context, '/edit-profile');
+                    // Navigator.pushNamed(context, '/edit-profile');
+                    context.push('/edit-profile');
                   },
                 child: menuItem(
                   'Edit Profile'
@@ -289,7 +293,8 @@ class _ProfilePageState extends State<ProfilePage> {
               ),
               GestureDetector(
                 onTap: () {
-                  Navigator.pushNamed(context, '/transaction-history');
+                  // Navigator.pushNamed(context, '/transaction-history');
+                  context.push('/transaction-history');
                 },
                 child: menuItem('Your Orders'),
               ),
@@ -327,7 +332,8 @@ class _ProfilePageState extends State<ProfilePage> {
               ),
               GestureDetector(
                 onTap: () {
-                  Navigator.pushNamed(context, '/admin-chat-rooms');
+                  // Navigator.pushNamed(context, '/admin-chat-rooms');
+                  context.push('/admin-chat-rooms');
                 },
                 child: menuItem('Admin Chat'),
               ),

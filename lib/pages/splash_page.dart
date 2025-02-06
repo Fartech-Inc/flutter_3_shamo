@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:shamo/providers/auth_provider.dart';
 import 'package:shamo/providers/product_provider.dart';
@@ -29,24 +30,30 @@ class _SplashPageState extends State<SplashPage> {
     sessionCheck();
   }
 
-  Future sessionCheck() async {
+  Future<void> sessionCheck() async {
     final sharedPreferences = await SharedPreferences.getInstance();
     final email = sharedPreferences.getString('email');
     final password = sharedPreferences.getString('password');
     final token = sharedPreferences.getString('token');
 
     if (token != null) {
-      // ignore: use_build_context_synchronously
+      // Login ulang jika token ada
+      if (!mounted) return;
       await Provider.of<AuthProvider>(context, listen: false)
           .login(email: email, password: password);
 
-      // ignore: use_build_context_synchronously
-      Navigator.pushNamed(context, '/home');
+      // Navigasi ke home dengan GoRouter
+      if (mounted) {
+        context.push('/home');
+      }
     } else {
-      // ignore: use_build_context_synchronously
-      Navigator.pushNamed(context, '/sign-in');
+      // Navigasi ke sign-in dengan GoRouter
+      if (mounted) {
+        context.push('/sign-in');
+      }
     }
   }
+
 
   @override
   Widget build(BuildContext context) {

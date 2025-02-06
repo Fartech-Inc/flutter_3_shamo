@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:shamo/models/user_model.dart';
 import 'package:shamo/providers/auth_provider.dart';
@@ -38,7 +39,8 @@ class EditProfilePage extends StatelessWidget {
             ),
           ),
         );
-        Navigator.pushNamed(context, '/home');
+        // Navigator.pushNamed(context, '/home');
+        context.push('/home');
       } else {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
@@ -59,7 +61,8 @@ class EditProfilePage extends StatelessWidget {
             Icons.close
           ),
           onPressed: (){
-            Navigator.pop(context);
+            // Navigator.pop(context);
+            context.pop();
           },
         ),
         backgroundColor: backgroundColor1,

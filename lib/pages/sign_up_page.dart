@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:shamo/providers/auth_provider.dart';
 import 'package:shamo/theme.dart';
@@ -43,7 +44,8 @@ class _SignUpPageState extends State<SignUpPage> {
         email: emailController.text,
         password: passwordController.text, 
       )){
-        Navigator.pushNamed(context, '/home');
+        // Navigator.pushNamed(context, '/home');
+        context.push('/home');
       }else{
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
@@ -357,7 +359,8 @@ class _SignUpPageState extends State<SignUpPage> {
             ),
             GestureDetector(
               onTap: (){
-                Navigator.pop(context);
+                // Navigator.pop(context);
+                context.pop();
               },
               child: Text(
                 'Sign In',

@@ -1,5 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:shamo/models/product_model.dart';
 import 'package:shamo/pages/detail_chat_page.dart';
@@ -58,7 +59,8 @@ class _ProductPageState extends State<ProductPage> {
                     alignment: Alignment.centerLeft,
                     child: GestureDetector(
                       onTap: (){
-                        Navigator.pop(context);
+                        // Navigator.pop(context);
+                        context.pop();
                       },
                       child: Icon(
                         Icons.close,
@@ -95,7 +97,8 @@ class _ProductPageState extends State<ProductPage> {
                     height: 44,
                     child: TextButton(
                       onPressed: (){
-                        Navigator.pushNamed(context, '/cart');
+                        // Navigator.pushNamed(context, '/cart');
+                        context.push('/cart');
                       },
                       style: TextButton.styleFrom(
                         backgroundColor: primaryColor,
@@ -168,7 +171,8 @@ class _ProductPageState extends State<ProductPage> {
               children: [
                 GestureDetector(
                   onTap: () {
-                    Navigator.pop(context);
+                    // Navigator.pop(context);
+                    context.pop();
                   },
                   child: const Icon(
                     Icons.chevron_left,

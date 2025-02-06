@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:shamo/providers/transaction_provider.dart';
 import 'package:shamo/theme.dart';
@@ -90,8 +91,9 @@ class CheckoutSuccessPage extends StatelessWidget {
                   ),
                 ),
                 onPressed: () {
-                  Navigator.pushNamedAndRemoveUntil(
-                      context, '/home', (route) => false);
+                  // Navigator.pushNamedAndRemoveUntil(
+                  //     context, '/home', (route) => false);
+                  context.replace('home');
                 },
               ),
             ),
@@ -115,7 +117,8 @@ class CheckoutSuccessPage extends StatelessWidget {
                   ),
                 ),
                 onPressed: () {
-                  Navigator.pushNamed(context, '/my-orders');
+                  // Navigator.pushNamed(context, '/my-orders');
+                  context.push('/my-orders');
                 },
               ),
             ),

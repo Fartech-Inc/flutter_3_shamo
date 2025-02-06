@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:shamo/firebase_options.dart';
 import 'package:shamo/pages/admin_room_list_page.dart';
@@ -7,6 +8,7 @@ import 'package:shamo/pages/cart_page.dart';
 import 'package:shamo/pages/checkout_page.dart';
 import 'package:shamo/pages/checkout_success_page.dart';
 import 'package:shamo/pages/edit_profile_page.dart';
+import 'package:shamo/pages/home/home_page.dart';
 import 'package:shamo/pages/home/main_page.dart';
 import 'package:shamo/pages/payment_page.dart';
 import 'package:shamo/pages/sign_in_page.dart';
@@ -40,46 +42,20 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(
-          create:(context) => AuthProvider(),
-        ),
-        ChangeNotifierProvider(
-          create:(context) => ProductProvider(),
-        ),
-        ChangeNotifierProvider(
-          create:(context) => WishlistProvider(),
-        ),
-        ChangeNotifierProvider(
-          create: (context) => CategoryProvider(),
-        ),
-        ChangeNotifierProvider(
-          create: (context) => StatusCategoryProvider(),
-        ),
-        ChangeNotifierProvider(
-          create:(context) => CartProvider(),
-        ),
-        ChangeNotifierProvider(
-          create:(context) => TransactionProvider(),
-        ),
-        ChangeNotifierProvider(
-          create:(context) => PageProvider(),
-        ),
+        ChangeNotifierProvider(create: (context) => AuthProvider()),
+        ChangeNotifierProvider(create: (context) => ProductProvider()),
+        ChangeNotifierProvider(create: (context) => WishlistProvider()),
+        ChangeNotifierProvider(create: (context) => CategoryProvider()),
+        ChangeNotifierProvider(create: (context) => StatusCategoryProvider()),
+        ChangeNotifierProvider(create: (context) => CartProvider()),
+        ChangeNotifierProvider(create: (context) => TransactionProvider()),
+        ChangeNotifierProvider(create: (context) => PageProvider()),
       ],
-      child: MaterialApp(
+      child: MaterialApp.router(
         debugShowCheckedModeBanner: false,
-        routes: {
-          '/' : (context) => const SplashPage(),
-          '/sign-in' : (context) =>  const SignInPage(),
-          '/sign-up' : (context) =>  const SignUpPage(),
-          '/home' : (context) =>  const MainPage(),
-          '/edit-profile' :(context) => const EditProfilePage(),
-          '/cart' : (context) => const CartPage(),
-          '/checkout' : (context) => const CheckoutPage(),
-          '/checkout-payment': (context) => const PaymentPage(),
-          '/checkout-success' : (context) => const CheckoutSuccessPage(),
-          '/admin-chat-rooms': (context) => const AdminChatRoomListPage(),
-          '/transaction-history': (context) => TransactionHistoryPage()
-        },
+        routeInformationProvider: _router.routeInformationProvider,
+        routeInformationParser: _router.routeInformationParser,
+        routerDelegate: _router.routerDelegate,
       ),
     );
 
@@ -89,4 +65,57 @@ class MyApp extends StatelessWidget {
     //   home: const IndexPage(),
     // );
   }
+
+
 }
+
+final GoRouter _router = GoRouter(
+  routes: [
+    GoRoute(
+      path: '/',
+      builder: (context, state) => const SplashPage(),
+    ),
+    GoRoute(
+      path: '/sign-in',
+      builder: (context, state) => const SignInPage(),
+    ),
+    GoRoute(
+      path: '/sign-up',
+      builder: (context, state) => const SignUpPage(),
+    ),
+    GoRoute(
+      path: '/home',
+      builder: (context, state) => const MainPage(),
+    ),
+    GoRoute(
+      path: '/edit-profile',
+      builder: (context, state) => const EditProfilePage(),
+    ),
+    GoRoute(
+      path: '/cart',
+      builder: (context, state) => const CartPage(),
+    ),
+    GoRoute(
+      path: '/checkout',
+      builder: (context, state) => const CheckoutPage(),
+    ),
+    GoRoute(
+      path: '/checkout-payment',
+      builder: (context, state) => const PaymentPage(),
+    ),
+    GoRoute(
+      path: '/checkout-success',
+      builder: (context, state) => const CheckoutSuccessPage(),
+    ),
+    GoRoute(
+      path: '/admin-chat-rooms',
+      builder: (context, state) => const AdminChatRoomListPage(),
+    ),
+    GoRoute(
+      path: '/transaction-history',
+      builder: (context, state) => TransactionHistoryPage(),
+    ),
+
+
+  ],
+);

@@ -1,10 +1,10 @@
 class TransactionModel {
-  final int id;
-  final String status;
-  final String address;
-  final int totalPrice;
-  final int shippingPrice;
-  final int created_at;
+  final dynamic id;
+  final dynamic status;
+  final dynamic address;
+  final dynamic totalPrice;
+  final dynamic shippingPrice;
+  final dynamic created_at;
 
   TransactionModel({
     required this.id,

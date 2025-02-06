@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:shamo/providers/auth_provider.dart';
 import 'package:shamo/providers/cart_provider.dart';
@@ -53,8 +54,9 @@ class _PaymentPageState extends State<PaymentPage> {
 
       if (success) {
         // cartProvider.removeCart();
-        Navigator.pushNamedAndRemoveUntil(
-            context, '/checkout-success', (route) => false);
+        // Navigator.pushNamedAndRemoveUntil(
+        //     context, '/checkout-success', (route) => false);
+        context.push('/checkout-success');
       }
     }
 

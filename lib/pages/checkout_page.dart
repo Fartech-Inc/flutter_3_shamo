@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:shamo/providers/cart_provider.dart';
 import 'package:shamo/theme.dart';
@@ -297,7 +298,8 @@ class _CheckoutPageState extends State<CheckoutPage> {
                 )
               ),
               onPressed:  () {
-                Navigator.pushNamed(context, '/checkout-payment');
+                // Navigator.pushNamed(context, '/checkout-payment');
+                context.push('/checkout-payment');
               },
               child: Text(
                 'Checkout Now',

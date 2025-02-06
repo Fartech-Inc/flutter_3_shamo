@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:shamo/providers/cart_provider.dart';
 import 'package:shamo/theme.dart';
@@ -62,7 +63,8 @@ class CartPage extends StatelessWidget {
                   )
                 ),
                 onPressed: (){
-                  Navigator.pushNamedAndRemoveUntil(context, '/home', (route) => false);
+                  // Navigator.pushNamedAndRemoveUntil(context, '/home', (route) => false);
+                  context.replace('/home');
                 },
                 child: Text(
                   'Explore Store',
@@ -139,7 +141,8 @@ class CartPage extends StatelessWidget {
               ),
               child: TextButton(
                 onPressed: (){
-                  Navigator.pushNamed(context, '/checkout');
+                  // Navigator.pushNamed(context, '/checkout');
+                  context.push('/checkout');
                 },
                 style: TextButton.styleFrom(
                   backgroundColor: primaryColor,

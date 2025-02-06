@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:agora_rtc_engine/rtc_local_view.dart' as rtc_local_view;
 import 'package:agora_rtc_engine/rtc_remote_view.dart' as rtc_remote_view;
+import 'package:go_router/go_router.dart';
 import 'package:shamo/utils/settings.dart';
 
 class CallPage extends StatefulWidget {
@@ -148,7 +149,10 @@ class _CallPageState extends State<CallPage> {
             elevation: 2,
             fillColor: muted ? Colors.blueAccent : Colors.white,
           ),
-          RawMaterialButton(onPressed: () => Navigator.pop(context),
+          RawMaterialButton(onPressed: () {
+            // Navigator.pop(context);
+            context.pop();
+          },
             child: Icon(Icons.call_end, color: Colors.white, size: 35,),
             fillColor: Colors.redAccent,
             padding: EdgeInsets.all(15),

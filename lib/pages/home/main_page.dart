@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:shamo/pages/home/chat_page.dart';
 import 'package:shamo/pages/home/home_page.dart';
@@ -24,7 +25,8 @@ class _MainPageState extends State<MainPage> {
     Widget cartButton(){
       return FloatingActionButton(
         onPressed: (){
-          Navigator.pushNamed(context, '/cart');
+          // Navigator.pushNamed(context, '/cart');
+          context.push('/cart');
         },
         backgroundColor: secondaryColor,
         child: Image.asset(

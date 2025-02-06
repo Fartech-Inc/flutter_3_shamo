@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:shamo/models/transaction_model.dart';
 import 'package:shamo/providers/auth_provider.dart';
@@ -36,6 +37,10 @@ class _TransactionHistoryPageState extends State<TransactionHistoryPage> {
         title: Text('Transaction History', style: primaryTextStyle),
         backgroundColor: backgroundColor1,
         centerTitle: true,
+        leading: IconButton(onPressed: () {
+          // Navigator.pop(context);
+          context.pop();
+        }, icon: Icon(Icons.arrow_back_ios, color: Colors.white,)),
       ),
       body: transactions.isEmpty
           ? Center(
