@@ -416,11 +416,15 @@ class _ProductPageState extends State<ProductPage> {
                 children: [
                   GestureDetector(
                     onTap: (){
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => DetailChatPage(widget.product),
-                        )
+                      // Navigator.push(
+                      //   context,
+                      //   MaterialPageRoute(
+                      //     builder: (context) => DetailChatPage(widget.product),
+                      //   )
+                      // );
+                      context.push(
+                        '/detail-chat',
+                        extra: widget.product, // Kirimkan data sebagai extra
                       );
                     },
                     child: Container(

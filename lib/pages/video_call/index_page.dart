@@ -1,5 +1,6 @@
 import 'package:agora_rtc_engine/rtc_engine.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'dart:async';
 import 'dart:developer';
 import 'package:permission_handler/permission_handler.dart';
@@ -74,7 +75,14 @@ class _IndexPageState extends State<IndexPage> {
       await _handleCameraAndMic(Permission.camera);
       await _handleCameraAndMic(Permission.microphone);
       if (!mounted) return;
-      await Navigator.push(context, MaterialPageRoute(builder: (context) => CallPage(clientName: _channelController.text, role: _role,),));
+      // await Navigator.push(context, MaterialPageRoute(builder: (context) => CallPage(clientName: _channelController.text, role: _role,),));
+      context.push(
+        '/call',
+        extra: {
+          'clientName': _channelController.text,
+          'role': _role,
+        },
+      );
     }
   }
 

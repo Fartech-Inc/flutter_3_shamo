@@ -1,6 +1,7 @@
 // ignore_for_file: must_be_immutable
 
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:shamo/models/message_model.dart';
 import 'package:shamo/models/product_model.dart';
@@ -81,12 +82,13 @@ class _DetailChatPageState extends State<DetailChatPage> {
               IconButton(
                 icon: const Icon(Icons.videocam, color: Colors.white),
                 onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const IndexPage(),
-                    ),
-                  );
+                  // Navigator.push(
+                  //   context,
+                  //   MaterialPageRoute(
+                  //     builder: (context) => const IndexPage(),
+                  //   ),
+                  // );
+                  context.push('/index-page');
                 },
               ),
             ],

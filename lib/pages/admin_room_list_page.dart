@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:shamo/models/message_model.dart';
 import 'package:shamo/services/message_service.dart';
 import 'package:shamo/theme.dart';
@@ -59,12 +60,13 @@ class AdminChatRoomListPage extends StatelessWidget {
                   trailing: const Icon(Icons.chevron_right),
                   onTap: () {
                     // Navigasi ke halaman chat detail
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => AdminChatDetailPage(userId: firstMessage.userId),
-                      ),
-                    );
+                    // Navigator.push(
+                    //   context,
+                    //   MaterialPageRoute(
+                    //     builder: (context) => AdminChatDetailPage(userId: firstMessage.userId),
+                    //   ),
+                    // );
+                    context.push('/admin-chat-detail/${firstMessage.userId}');
                   },
                 );
               },
